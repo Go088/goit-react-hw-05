@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
-import fetchMovies from "../../components/movies-api";
+import { fetchMovies } from "../../components/movies-api";
+import MoviesList from "../../components/MoviesList/MoviesList";
 
 export default function HomePage() {
   const [moviesData, setMoviesData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function getData() {
       try {
-        const data = await fetchMovies();
-        setMoviesData(data);
-        console.log(data);
+        setIsLoading(true);
+        setError(false);
+        const fetchLoadList = await fetchMovies();
+        setMoviesData(fetchLoadList);
       } catch (error) {
-        error;
+        setError(true);
+      } finally {
+        setIsLoading(false);
       }
     }
     getData();
@@ -20,6 +26,9 @@ export default function HomePage() {
   return (
     <div>
       <h1>Home Page</h1>
+      {isLoading && <b>Loading...</b>}
+      {error && <b>HTTP Error!</b>}
+      <MoviesList items={moviesData} />
     </div>
   );
 }

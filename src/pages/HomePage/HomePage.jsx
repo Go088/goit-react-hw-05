@@ -25,7 +25,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Home Page</h1>
+      <h2>Trending today</h2>
       {isLoading && <b>Loading...</b>}
       {error && <b>HTTP Error!</b>}
       <MoviesList items={moviesData} />

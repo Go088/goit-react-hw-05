@@ -2,7 +2,7 @@
   display: flex;
 }
 .img {
-  width: 400px;
+  width: 360px;
 }
 .list {
   padding-top: 20px;
@@ -12,14 +12,26 @@
   width: 600px;
   padding-left: 20px;
 }
-.descr {
-  font-size: 20px;
-  font-weight: 500;
-}
+
 .title {
   text-align: center;
 }
 .score {
   font-size: 18px;
   font-weight: 500;
+}
+
+.infoWrap {
+  margin-bottom: 20px;
+  padding: 16px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.infoList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 12px;
 }

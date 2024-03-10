@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { fetchMovieById } from "../../components/movies-api";
 import MovieDetail from "../../components/MovieDetails/MovieDetails";
 
@@ -8,6 +8,9 @@ export default function MovieDetailsPage() {
   const [moviesData, setMoviesData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const location = useLocation();
+  const backLinkRef = useRef(location.state ?? "/");
 
   useEffect(() => {
     async function getData() {
@@ -27,6 +30,7 @@ export default function MovieDetailsPage() {
 
   return (
     <div>
+      <Link to={backLinkRef.current}>Go back</Link>
       {isLoading && <b>Loading...</b>}
       {error && <b>HTTP Error!</b>}
       {moviesData && <MovieDetail moviesData={moviesData} />}

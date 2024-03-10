@@ -1,3 +1,4 @@
+import { NavLink, Outlet } from "react-router-dom";
 import css from "./MovieDetails.module.css";
 
 export default function MovieDetail({ moviesData }) {
@@ -33,6 +34,14 @@ export default function MovieDetail({ moviesData }) {
           </li>
         </ul>
       </div>
+      <div className={css.infoWrap}>
+        <p>Additional information</p>
+        <ul className={css.infoList}>
+          <NavLink to="cast">Cast</NavLink>
+          <NavLink to="reviews">Reviews</NavLink>
+        </ul>
+      </div>
+      <Outlet />
     </div>
   );
 }

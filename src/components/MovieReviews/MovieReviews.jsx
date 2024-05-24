@@ -39,7 +39,7 @@ export default function MovieReviews() {
             );
           })
         ) : (
-          <p>We don't have any reviews for this movie.</p>
+          <p>We don&apos;t have any reviews for this movie.</p>
         )}
       </ul>
     </div>
